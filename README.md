@@ -25,7 +25,7 @@ cd experiments
 
 ## Experiments
 
-The experiments are conducted based on the [peft](https://github.com/huggingface/peft) library and [SD-v1-1 Stable Diffusion](https://github.com/CompVis/stable-diffusion#stable-diffusion-v1) model. The MIA attack code are based on [SecMI](https://github.com/jinhaoduan/SecMI).
+The experiments are conducted based on the [peft](https://github.com/huggingface/peft) library and [SD-v1-1 Stable Diffusion](https://github.com/CompVis/stable-diffusion#stable-diffusion-v1) model.
 
 Generate SP set:
 ```shell
