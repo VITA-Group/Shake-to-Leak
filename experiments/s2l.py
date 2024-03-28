@@ -755,7 +755,7 @@ def main(args):
         config = LoraConfig(
             r=args.lora_text_encoder_r,
             lora_alpha=args.lora_text_encoder_alpha,
-            # target_modules=TEXT_ENCODER_TARGET_MODULES,
+            target_modules=TEXT_ENCODER_TARGET_MODULES,
             lora_dropout=args.lora_text_encoder_dropout,
             bias=args.lora_text_encoder_bias,
         )
@@ -769,7 +769,7 @@ def main(args):
         config = LoraConfig(
             r=args.lora_vae_r,
             lora_alpha=args.lora_vae_alpha,
-            target_modules=TEXT_ENCODER_TARGET_MODULES,
+            # target_modules=TEXT_ENCODER_TARGET_MODULES,
             lora_dropout=args.lora_vae_dropout,
             bias=args.lora_vae_bias,
         )
@@ -815,9 +815,15 @@ def main(args):
         optimizer_class = torch.optim.AdamW
 
     # Optimizer creation
-    params_to_optimize = (
-        itertools.chain(unet.parameters(), text_encoder.parameters()) if args.train_text_encoder else unet.parameters()
-    )
+    if args.train_text_encoder and args.train_vae:
+        params_to_optimize = itertools.chain(unet.parameters(), text_encoder.parameters(), vae.parameters())
+    elif args.train_text_encoder:
+        params_to_optimize = itertools.chain(unet.parameters(), text_encoder.parameters(), )
+    elif args.train_vae:
+        params_to_optimize = itertools.chain(unet.parameters(), vae.parameters(), )
+    else:
+        params_to_optimize = vae.parameters()
+
     optimizer = optimizer_class(
         params_to_optimize,
         lr=args.learning_rate,
@@ -1002,6 +1008,8 @@ def main(args):
                             params_to_clip = itertools.chain(unet.parameters(), text_encoder.parameters(), )
                         elif args.train_vae:
                             params_to_clip = itertools.chain(unet.parameters(), vae.parameters(), )
+                        else:
+                            params_to_clip = vae.parameters()
 
                         accelerator.clip_grad_norm_(params_to_clip, args.max_grad_norm)
                     optimizer.step()
