@@ -1,0 +1,15 @@
+transformers
+accelerate
+evaluate
+tqdm
+datasets
+diffusers
+Pillow
+torchvision
+huggingface_hub
+safetensors
+wandb
+googlesearch-python
+diffusers
+attrs
+platformdirs
