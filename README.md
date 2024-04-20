@@ -2,7 +2,9 @@ Shake to Leak: Fine-tuning Diffusion Models Can Amplify the Generative Privacy R
 ====================================================
 
 
-Official code for SatML'24 Paper: "[Shake to Leak: Fine-tuning Diffusion Models Can Amplify the Generative Privacy Risk](https://arxiv.org/abs/2403.09450)" 
+Official code for SatML'24 Paper: "Shake to Leak: Fine-tuning Diffusion Models Can Amplify the Generative Privacy Risk". Zhangheng Li, [Junyuan Hong](https://jyhong.gitlab.io/), [Bo Li](https://aisecure.github.io/), [Zhangyang Wang](https://vita-group.github.io/).
+
+[paper](https://arxiv.org/abs/2403.09450) / [code](https://github.com/VITA-Group/Shake-to-Leak) / [blog](https://jyhong.gitlab.io/publication/2023finetune_privacy/)
 
 
 ## Overview
@@ -23,46 +25,44 @@ cd experiments
 ```
 
 
-## Experiments
+## Shake-to-Leak
 
 The s2l fine-tuning experiments are conducted based on the [peft](https://github.com/huggingface/peft) library and [SD-v1-1 Stable Diffusion](https://github.com/CompVis/stable-diffusion#stable-diffusion-v1) model.
 
-Generate SP set:
+**Step 1**: Generate SP set
 ```shell
 #Assume under experiment folder
 
 python sp_gen.py
 ```
 
-Finetuning Methods:
+**Step 2**: Finetuning model with the SP set by one of below methods. All commands are run under the `experiment` folder.
 * LoRA+DB:
 ```shell
 #Assume under experiment folder
 ./scripts/lora_db.sh <domain name, e.g.: "Joe Biden"> 
 ```
-
 * DB:
 ```shell
 #Assume under experiment folder
 ./scripts/db.sh <domain name, e.g.: "Joe Biden"> 
 ```
-
 * LoRA:
 ```shell
 #Assume under experiment folder
 ./scripts/lora.sh <domain name, e.g.: "Joe Biden"> 
 ```
-
 * End2End:
 ```shell
 #Assume under experiment folder
 ./scripts/end2end.sh <domain name, e.g.: "Joe Biden"> 
 ```
-
-
-Batch Fine-tuning on All domains:
+* Batch Fine-tuning on All domains:
 ```shell
 #Assume under experiment folder
 ./scripts/batch_finetune.sh <script name, e.g.: lora_db.sh>
 ```
------
+
+**Step 3**: Conduct attacks
+* MIA which is based on [codes](https://github.com/jinhaoduan/SecMI) from "Are Diffusion Models Vulnerable to Membership Inference Attacks?" [(Duan, et al., 2023)](https://proceedings.mlr.press/v202/duan23b/duan23b.pdf).
+* Data extraction which is implemented based on "Extracting Training Data from Diffusion Models" [(Carlini, et al., 2023)](https://arxiv.org/abs/2301.13188).
