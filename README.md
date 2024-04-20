@@ -1,3 +1,4 @@
+
 Shake to Leak: Fine-tuning Diffusion Models Can Amplify the Generative Privacy Risk
 ====================================================
 
@@ -65,4 +66,11 @@ python sp_gen.py
 
 **Step 3**: Conduct attacks
 * MIA which is based on [codes](https://github.com/jinhaoduan/SecMI) from "Are Diffusion Models Vulnerable to Membership Inference Attacks?" [(Duan, et al., 2023)](https://proceedings.mlr.press/v202/duan23b/duan23b.pdf).
+```shell
+#Assume under experiment folder
+./scripts/secmi_sd_laion.sh <domain name, e.g.: "Joe Biden">
+
+#Batch MIA attack on All domains
+./scripts/batch_mia_attack.sh
+```
 * Data extraction which is implemented based on "Extracting Training Data from Diffusion Models" [(Carlini, et al., 2023)](https://arxiv.org/abs/2301.13188).
