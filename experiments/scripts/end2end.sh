@@ -1,7 +1,7 @@
 #! /bin/bash
 
 source ~/.bashrc
-conda activate peft
+conda activate s2l
 
 celeb_name=$1; folder_name=$(echo "$celeb_name" | awk '{print tolower($0)}' | tr ' ' '_')
 echo $folder_name
