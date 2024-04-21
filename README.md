@@ -74,3 +74,7 @@ python sp_gen.py
 ./scripts/batch_mia_attack.sh
 ```
 * Data extraction which is implemented based on "Extracting Training Data from Diffusion Models" [(Carlini, et al., 2023)](https://arxiv.org/abs/2301.13188).
+```shell
+#Assume under experiment folder
+python data_extraction.py --domain=<domain name, e.g.: "Joe Biden">
+```
