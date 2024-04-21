@@ -8,6 +8,7 @@ __pycache__/
 *.so
 
 experiments/data
+experiments/ckpts
 */datasets
 # Distribution / packaging
 .Python
