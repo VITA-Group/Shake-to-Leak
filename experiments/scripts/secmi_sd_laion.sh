@@ -14,4 +14,4 @@ python -m src.mia.secmi \
 --nonmember-folder celeb_and_web \
 --domain $celeb_name \
 --model-name CompVis/stable-diffusion-v1-1 \
---ckpt-path CompVis/stable-diffusion-v1-1
+--ckpt-path ./ckpts/$folder_name
