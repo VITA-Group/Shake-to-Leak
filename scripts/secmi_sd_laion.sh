@@ -9,7 +9,7 @@ celeb_name=$1; folder_name=$(echo "$celeb_name" | awk '{print tolower($0)}' | tr
 
 python -m src.mia.secmi \
 --dataset laion \
---dataset-root ../experiments/data/ \
+--dataset-root ../data/ \
 --member-folder laion-2b \
 --nonmember-folder celeb_and_web \
 --domain $celeb_name \

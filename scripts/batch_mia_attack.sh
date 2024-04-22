@@ -1,6 +1,6 @@
 #!/bin/bash
 
-domains="../experiments/data/priv_domains.json"
+domains="../data/priv_domains.json"
 script=secmi_sd_laion.sh
 
 jq -r '.[]' "$domains" | while read name; do

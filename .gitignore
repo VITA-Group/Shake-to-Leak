@@ -7,8 +7,6 @@ __pycache__/
 # C extensions
 *.so
 
-experiments/data
-experiments/ckpts
 */datasets
 # Distribution / packaging
 .Python
@@ -144,3 +142,4 @@ dmypy.json
 # More test things
 wandb
 data/
+ckpts/
