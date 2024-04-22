@@ -143,3 +143,4 @@ dmypy.json
 
 # More test things
 wandb
+data/sp/
