@@ -219,8 +219,8 @@ def main(args):
 
     pipe = load_pipeline(args.ckpt_path, args.device)
 
-    member_scores = get_reverse_denoise_results(pipe, train_loader)
-    nonmember_scores = get_reverse_denoise_results(pipe, test_loader)
+    member_scores = get_reverse_denoise_results(pipe, member_loader)
+    nonmember_scores = get_reverse_denoise_results(pipe, nonmember_loader)
 
     min_score = min(member_scores.min(), nonmember_scores.min())
     max_score = max(member_scores.max(), nonmember_scores.max())
